@@ -140,7 +140,7 @@ open class PullUpController: UIViewController {
      The default implementation of this method does nothing.
      - parameter stickyPoint: The target point, expressed in the pull up controller coordinate system
      */
-    open func pullUpControllerDidDrag(to point: CGFloat) { }
+    open func pullUpControllerDidDrag(to point: CGFloat, _ animationDuration: TimeInterval?) { }
     
     /**
      This method will move the pull up controller's view in order to show the provided visible point.
@@ -415,7 +415,7 @@ open class PullUpController: UIViewController {
          */
         let shouldNotifyObserver = animationDuration != nil
         topConstraint?.constant = value
-        pullUpControllerDidDrag(to: targetPoint)
+        pullUpControllerDidDrag(to: targetPoint, animationDuration)
         if shouldNotifyObserver {
             pullUpControllerWillMove(to: targetPoint)
         }

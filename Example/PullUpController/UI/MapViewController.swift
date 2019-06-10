@@ -23,7 +23,7 @@ class MapViewController: UIViewController {
     private var originalPullUpControllerViewSize: CGSize = .zero
     
     private func makeSearchViewControllerIfNeeded() -> SearchViewController {
-        let currentPullUpController = children
+        let currentPullUpController = childViewControllers
             .filter({ $0 is SearchViewController })
             .first as? SearchViewController
         let pullUpController: SearchViewController = currentPullUpController ?? UIStoryboard(name: "Main",bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
@@ -60,7 +60,7 @@ class MapViewController: UIViewController {
     
     @IBAction private func addButtonTapped() {
         guard
-            children.filter({ $0 is SearchViewController }).count == 0
+            childViewControllers.filter({ $0 is SearchViewController }).count == 0
             else { return }
         addPullUpController()
     }
